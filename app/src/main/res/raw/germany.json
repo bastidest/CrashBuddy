@@ -1,0 +1,53 @@
+{
+  "emergency_number": "017647768019",
+  "police_number": "017647768019",
+  "root_page": "injured",
+  "pages": {
+    "injured": {
+      "type": "buttons",
+      "question": "Are people injured?",
+      "short_desc": "injured?",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "first_aid_1",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "secure",
+          "color": ""
+        }
+      ]
+    },
+    "first_aid_1": {
+      "type": "buttons",
+      "question": "Is the victim dead?",
+      "short_desc": "dead?",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "injured",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "injured",
+          "color": ""
+        }
+      ]
+    },
+    "secure": {
+      "type": "buttons",
+      "question": "Please secure accident!",
+      "short_desc": "secure",
+      "answers": [
+        {
+          "text": "Ok",
+          "next": "injured",
+          "color": ""
+        }
+      ]
+    }
+  }
+}
