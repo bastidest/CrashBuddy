@@ -68,6 +68,9 @@ public class SpeechSynthesis implements TextToSpeech.OnInitListener {
             hasError = true;
         }
 
+        //Set speech speed
+        tts.setSpeechRate(0.7f);
+
         //Speak text if the say command has been called before
         if (!say.equals("") && !hasError) {
             speak(say);

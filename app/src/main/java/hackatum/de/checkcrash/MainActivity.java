@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.google.gson.Gson;
-
 import java.io.InputStream;
+import java.util.Locale;
 
 import hackatum.de.checkcrash.models.AccidentProcedure;
 
@@ -27,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
             byte[] b = new byte[jsonInputStream.available()];
             jsonInputStream.read(b);
 
-            Gson gson = new Gson();
-            AccidentProcedure response = gson.fromJson(new String(b), AccidentProcedure.class);
+            AccidentProcedure.load(new String(b));
 
-            System.out.println(response.pages.get("injured").answers[0].text);
+            AccidentProcedure.accidentProcedure.pages.get("injured").speak(this, Locale.ENGLISH);
 
         } catch (Exception e) {
             e.printStackTrace();
