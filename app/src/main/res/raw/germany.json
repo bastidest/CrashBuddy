@@ -39,7 +39,7 @@
     },
     "secure": {
       "type": "buttons",
-      "question": "Please secure accident!",
+      "question": "Please secure the accident!",
       "short_desc": "secured?",
       "answers": [
         {

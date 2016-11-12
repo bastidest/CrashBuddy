@@ -54,7 +54,7 @@ public class ButtonFragment extends Fragment {
         String question = page.question;
         questionTextView.setText(question);
 
-        mListener.onPageLoad(page.answers);
+        mListener.onPageLoad(page);
 
         return root;
     }

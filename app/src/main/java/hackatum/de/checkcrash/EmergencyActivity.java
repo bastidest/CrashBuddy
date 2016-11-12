@@ -14,6 +14,7 @@ import android.widget.ScrollView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import hackatum.de.checkcrash.design.BreadcrumbView;
 import hackatum.de.checkcrash.fragments.ButtonFragment;
@@ -24,13 +25,12 @@ import hackatum.de.checkcrash.models.Page;
 
 public class EmergencyActivity extends AppCompatActivity implements PageFragmentListener {
 
-    private final int fragmentContainer = R.id.fragment_container;
     private HorizontalScrollView scrollView;
     private ViewGroup breadcrumbs;
     private FragmentManager fragmentManager;
     private AccidentProcedure accidentProcedure;
     private ViewGroup buttons;
-    private boolean firstPage = true;
+    private ArrayList<Page> pageList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,22 +70,70 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         switch (direction) {
             case 1:
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-                BreadcrumbView bv = new BreadcrumbView(this, firstPage);
-                firstPage = false;
-                Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
-                bv.setText(page.shortDesc);
-                breadcrumbs.addView(bv);
                 break;
             case -1:
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                break;
         }
+        int fragmentContainer = R.id.fragment_container;
         fragmentTransaction.replace(fragmentContainer, ButtonFragment.newInstance(pageId));
-        fragmentTransaction.addToBackStack(null);
+        if (pageList.size() > 0)
+            fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        pageList.add(AccidentProcedure.accidentProcedure.pages.get(pageId));
     }
 
-    @Override
-    public void onPageLoad(Answer[] answers) {
+    /**
+     * loads a Page that is already loaded as a Fragment in the Activity and goes back to it
+     * and deletes the backStack to the first Page
+     *
+     * @param p
+     */
+    private void loadExistingPage(Page p) {
+        int index = pageList.indexOf(p);
+        for (int i = pageList.size() - 1; i > index; i--) {
+            pageList.remove(i);
+            fragmentManager.popBackStack();
+        }
+//        HashMap<String, Page> hashMap = AccidentProcedure.accidentProcedure.pages;
+//        for (Map.Entry<String, Page> entry : hashMap.entrySet()) {
+//            if(entry.getValue().equals(p)) {
+//                loadFragment(entry.getKey(), -1);
+//            }
+//        }
+
+    }
+
+    /**
+     * draws the Breadcrumb bar and sets up OnClickListeners
+     */
+    private void drawBreadcumbs() {
+        boolean first = true;
+        breadcrumbs.removeAllViews();
+        for (int i = 0; i < pageList.size() - 1; i++) {
+            final Page p = pageList.get(i);
+            BreadcrumbView bv = new BreadcrumbView(this, first);
+            bv.setText(p.shortDesc);
+
+            bv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    loadExistingPage(p);
+                }
+            });
+
+            breadcrumbs.addView(bv);
+            first = false;
+        }
+        scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+    }
+
+    /**
+     * draws all possible answers an sets OnClickListeners for each one
+     *
+     * @param answers all possible answers
+     */
+    private void drawButtons(Answer[] answers) {
         buttons.removeAllViews();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
@@ -101,11 +149,24 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
                 }
             });
         }
-        scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+    }
+
+
+    /**
+     * Callback from the Fragment after it finished drawing the Views
+     *
+     * @param page The Page the Fragment is referencing
+     */
+    @Override
+    public void onPageLoad(Page page) {
+        drawBreadcumbs();
+        drawButtons(page.answers);
     }
 
     @Override
     public void onBackPressed() {
         fragmentManager.popBackStack();
+        if (pageList.size() > 1)
+            pageList.remove(pageList.size() - 1);
     }
 }

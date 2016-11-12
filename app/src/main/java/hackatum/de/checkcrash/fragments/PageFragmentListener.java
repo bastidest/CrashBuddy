@@ -1,7 +1,7 @@
 package hackatum.de.checkcrash.fragments;
 
-import hackatum.de.checkcrash.models.Answer;
+import hackatum.de.checkcrash.models.Page;
 
 public interface PageFragmentListener {
-    void onPageLoad(Answer[] answers);
+    void onPageLoad(Page page);
 }
