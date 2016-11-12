@@ -150,15 +150,17 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             Button button = new Button(this);
             button.setText(answer.text);
             button.setLayoutParams(params);
-            int color = Color.parseColor(answer.color);
-            if (color != -1) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    button.setBackgroundTintList(new ColorStateList(new int[][]{new int[]{0}}, new int[]{color}));
-                } else {
-                    button.setBackgroundColor(color);
+            if (answer.color != null && answer.color.length() > 0) {
+                int color = Color.parseColor(answer.color);
+                if (color != -1) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        button.setBackgroundTintList(new ColorStateList(new int[][]{new int[]{0}}, new int[]{color}));
+                    } else {
+                        button.setBackgroundColor(color);
+                    }
                 }
-
             }
+
             buttons.addView(button);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
