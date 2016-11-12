@@ -17,22 +17,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".EmergencyActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".EmergencyActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".SettingsActivity"
             android:screenOrientation="portrait" />
 
-        <receiver android:name=".EmergencyWidget">
+        <receiver
+            android:name=".EmergencyWidget"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
