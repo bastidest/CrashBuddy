@@ -14,10 +14,17 @@
             style="@style/QuestionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:text="Buttons Fragment"
             android:textColor="@color/colorQuestion" />
+
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_question"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </FrameLayout>

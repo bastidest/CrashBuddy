@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -19,7 +20,6 @@ public class ButtonFragment extends Fragment {
     private String pageId;
 
     private PageFragmentListener mListener;
-    private TextView questionTextView;
 
     public ButtonFragment() {
         // Required empty public constructor
@@ -44,9 +44,10 @@ public class ButtonFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_button, container, false);
+        View view = inflater.inflate(R.layout.fragment_button, container, false);
 
-        questionTextView = (TextView) root.findViewById(R.id.text_question);
+        TextView questionTextView = (TextView) view.findViewById(R.id.text_question);
+        WebView webView = (WebView) view.findViewById(R.id.web_view);
 
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
         page.speak(getContext(), Locale.ENGLISH);
@@ -54,9 +55,11 @@ public class ButtonFragment extends Fragment {
         String question = page.question;
         questionTextView.setText(question);
 
+        webView.loadData(page.description, "text/html; charset=utf-8", "utf-8");
+
         mListener.onPageLoad(page);
 
-        return root;
+        return view;
     }
 
     @Override
