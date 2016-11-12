@@ -85,6 +85,18 @@
         }
       ]
     },
+    "call_ambulance": {
+      "type": "call",
+      "question": "Call the ambulance",
+      "short_desc": "Ambulance",
+      "answers": [
+        {
+          "text": "End",
+          "next": "summary",
+          "color": "#00ff00"
+        }
+      ]
+    },
     "summary": {
       "type": "summary",
       "question": "",
