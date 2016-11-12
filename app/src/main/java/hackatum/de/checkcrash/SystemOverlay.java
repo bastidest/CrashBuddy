@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 public class SystemOverlay {
 
+    private static WindowManager windowManager;
+    private static View layout;
+
     /**
      * Creates an overlay (over the phone app) which can display important information
      *
@@ -24,7 +27,6 @@ public class SystemOverlay {
      * @param line3
      */
     public static void createPhoneOverlay(Context c, String line1, String line2, String line3) {
-        WindowManager windowManager;
         windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
         LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -36,7 +38,7 @@ public class SystemOverlay {
                 PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.TOP | Gravity.CENTER;
 
-        View layout = inflater.inflate(R.layout.phone_overlay_layout, null);
+        layout = inflater.inflate(R.layout.phone_overlay_layout, null);
         ((TextView) layout.findViewById(R.id.textView)).setText(line1);
         ((TextView) layout.findViewById(R.id.textView2)).setText(line2);
         ((TextView) layout.findViewById(R.id.textView3)).setText(line3);
@@ -57,4 +59,7 @@ public class SystemOverlay {
     }
 
 
+    public static void destroyPhoneOverlay() {
+        windowManager.removeView(layout);
+    }
 }

@@ -118,7 +118,7 @@ public class CameraFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
-        cameraButton = (Button) view.findViewById(R.id.button5);
+        cameraButton = (Button) view.findViewById(R.id.button_call);
         layout = (GridLayout) view.findViewById(R.id.image_grid);
         desc = (TextView) view.findViewById(R.id.textView10);
 
