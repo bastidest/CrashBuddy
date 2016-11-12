@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import hackatum.de.checkcrash.R;
 import hackatum.de.checkcrash.models.AccidentProcedure;
 import hackatum.de.checkcrash.models.Page;
@@ -47,6 +49,7 @@ public class ButtonFragment extends Fragment {
         questionTextView = (TextView) root.findViewById(R.id.text_question);
 
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
+        page.speak(getContext(), Locale.ENGLISH);
 
         String question = page.question;
         questionTextView.setText(question);

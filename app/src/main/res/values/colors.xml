@@ -5,4 +5,6 @@
     <color name="colorAccent">#ff4081</color>
 
     <color name="colorQuestion">#000000</color>
+    <color name="colorBreadcrumbs">#fff</color>
+    <color name="colorBreadcrumbActive">#7986cb</color>
 </resources>
