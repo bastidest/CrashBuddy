@@ -125,7 +125,13 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             breadcrumbs.addView(bv);
             first = false;
         }
-        scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+            }
+        });
+
     }
 
     /**
