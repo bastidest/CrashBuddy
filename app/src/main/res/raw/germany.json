@@ -11,12 +11,12 @@
         {
           "text": "Yes",
           "next": "first_aid_1",
-          "color": ""
+          "color": "#00ff00"
         },
         {
           "text": "No",
           "next": "secure",
-          "color": ""
+          "color": "#ff0000"
         }
       ]
     },

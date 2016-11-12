@@ -1,6 +1,9 @@
 package hackatum.de.checkcrash;
 
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -125,7 +128,13 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             breadcrumbs.addView(bv);
             first = false;
         }
-        scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+        scrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
+            }
+        });
+
     }
 
     /**
@@ -141,6 +150,15 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             Button button = new Button(this);
             button.setText(answer.text);
             button.setLayoutParams(params);
+            int color = Color.parseColor(answer.color);
+            if (color != -1) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    button.setBackgroundTintList(new ColorStateList(new int[][]{new int[]{0}}, new int[]{color}));
+                } else {
+                    button.setBackgroundColor(color);
+                }
+
+            }
             buttons.addView(button);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
