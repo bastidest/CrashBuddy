@@ -35,6 +35,8 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/emergency_widget_info" />
         </receiver>
+
+        <activity android:name=".ViewAccidentSummaryActivity"></activity>
     </application>
 
 </manifest>

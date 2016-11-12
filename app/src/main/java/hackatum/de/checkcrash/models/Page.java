@@ -14,6 +14,7 @@ public class Page {
     public String type;
     public String question;
     public String shortDesc;
+    public String description;
 
     public Answer[] answers;
 
