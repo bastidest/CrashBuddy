@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,7 +27,6 @@ public class CallFragment extends Fragment {
     private String pageId;
 
     private PageFragmentListener mListener;
-    private ImageButton callButton;
 
     public CallFragment() {
         // Required empty public constructor
@@ -55,7 +55,8 @@ public class CallFragment extends Fragment {
 
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
 
-        callButton = (ImageButton) view.findViewById(R.id.button_call);
+        ImageButton callButton = (ImageButton) view.findViewById(R.id.button_call);
+        WebView webView = (WebView) view.findViewById(R.id.web_view);
         TextView questionText = (TextView) view.findViewById(R.id.text_question);
 
         final String uri;
@@ -69,6 +70,9 @@ public class CallFragment extends Fragment {
 
         questionText.setText(page.question);
         page.speak(getContext(), Locale.ENGLISH);
+
+        webView.loadData(page.description, "text/html; charset=utf-8", "utf-8");
+        webView.loadUrl("file:///android_asset/pages/" + pageId + "/index.html");
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
