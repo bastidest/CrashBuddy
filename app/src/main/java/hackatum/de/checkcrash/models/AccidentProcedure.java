@@ -1,12 +1,10 @@
 package hackatum.de.checkcrash.models;
 
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
-
-/**
- * Created by matthias on 11/11/16.
- */
 
 public class AccidentProcedure {
 
@@ -18,7 +16,9 @@ public class AccidentProcedure {
 
     public static void load(String json) {
         if (accidentProcedure == null) {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                    .create();
             accidentProcedure = gson.fromJson(json, AccidentProcedure.class);
         }
     }
