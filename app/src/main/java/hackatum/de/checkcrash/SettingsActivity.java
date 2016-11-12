@@ -1,6 +1,8 @@
 package hackatum.de.checkcrash;
 
+import android.Manifest;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -27,8 +29,23 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        SystemOverlay.requestSystemAlertPermission(this);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.SYSTEM_ALERT_WINDOW,
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.RECORD_AUDIO,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE
+                    },
+                    69 + 1);
+        }
+
+
+        prefs = getSharedPreferences("settings", MODE_PRIVATE);
 
         grantPermissions = (Button) findViewById(R.id.button2);
         tts = (CheckBox) findViewById(R.id.checkBox);
@@ -44,6 +61,18 @@ public class SettingsActivity extends AppCompatActivity {
         grantPermissions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[]{
+                                    Manifest.permission.ACCESS_FINE_LOCATION,
+                                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                                    Manifest.permission.CAMERA,
+                                    Manifest.permission.RECORD_AUDIO,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE
+                            },
+                            69 + 1);
+                }
                 SystemOverlay.requestSystemAlertPermission(SettingsActivity.this);
             }
         });

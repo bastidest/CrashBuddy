@@ -12,7 +12,7 @@
         {
           "text": "Next",
           "next": "injured",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -23,14 +23,14 @@
       "description": "",
       "answers": [
         {
-          "text": "Yes",
-          "next": "check_injuries",
-          "color": ""
-        },
-        {
           "text": "No",
           "next": "police_1",
-          "color": ""
+          "color": "#9FA8DA"
+        },
+        {
+          "text": "Yes",
+          "next": "check_injuries",
+          "color": "#7986CB"
         }
       ]
     },
@@ -43,7 +43,7 @@
         {
           "text": "Next",
           "next": "police_2",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -56,7 +56,7 @@
         {
           "text": "Next",
           "next": "capture_pictures",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -69,7 +69,7 @@
         {
           "text": "Next",
           "next": "capture_audio",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -82,12 +82,12 @@
         {
           "text": "Yes",
           "next": "capture_audio",
-          "color": ""
+          "color": "#9FA8DA"
         },
         {
           "text": "No",
           "next": "end",
-          "color": ""
+          "color": "#7986CB"
         }
       ]
     },
@@ -100,22 +100,16 @@
         {
           "text": "Next",
           "next": "end",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
     "end": {
       "type": "buttons",
-      "question": "Wait for the Nuuuut nuuut",
+      "question": "Wait for the Police",
       "short_desc": "Wait",
       "description": "",
-      "answers": [
-        {
-          "text": "End",
-          "next": "end",
-          "color": ""
-        }
-      ]
+      "answers": []
     },
     "police_2": {
       "type": "call",
@@ -126,20 +120,20 @@
         {
           "text": "Next",
           "next": "move_injured",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
     "move_injured": {
       "type": "buttons",
-      "question": "Move the injured out of the danger zone",
+      "question": "Move the injured away from the street",
       "short_desc": "Move victim",
       "description": "",
       "answers": [
         {
           "text": "Next",
           "next": "check_bleeding",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -150,14 +144,14 @@
       "description": "",
       "answers": [
         {
-          "text": "Yes",
-          "next": "stop_bleeding",
-          "color": ""
-        },
-        {
           "text": "No",
           "next": "check_consciousness",
-          "color": ""
+          "color": "#9FA8DA"
+        },
+        {
+          "text": "Yes",
+          "next": "stop_bleeding",
+          "color": "#7986CB"
         }
       ]
     },
@@ -170,7 +164,7 @@
         {
           "text": "Next",
           "next": "check_consciousness",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -183,12 +177,12 @@
         {
           "text": "Yes",
           "next": "first_aid",
-          "color": ""
+          "color": "#9FA8DA"
         },
         {
           "text": "No",
           "next": "free_airways",
-          "color": ""
+          "color": "#7986CB"
         }
       ]
     },
@@ -201,7 +195,7 @@
         {
           "text": "Next",
           "next": "head_tilt",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -214,7 +208,7 @@
         {
           "text": "Next",
           "next": "check_breathing",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -227,12 +221,12 @@
         {
           "text": "Yes",
           "next": "stable_site",
-          "color": ""
+          "color": "#9FA8DA"
         },
         {
           "text": "No",
           "next": "revive",
-          "color": ""
+          "color": "#7986CB"
         }
       ]
     },
@@ -241,26 +235,14 @@
       "question": "Bring the victim to the recovery position",
       "short_desc": "Recovery position",
       "description": "",
-      "answers": [
-        {
-          "text": "Next",
-          "next": "stable_site",
-          "color": ""
-        }
-      ]
+      "answers": []
     },
     "revive": {
       "type": "buttons",
       "question": "Revive the victim",
       "short_desc": "Revive",
       "description": "",
-      "answers": [
-        {
-          "text": "Next",
-          "next": "revive",
-          "color": ""
-        }
-      ]
+      "answers": []
     },
     "first_aid": {
       "type": "buttons",
@@ -271,7 +253,7 @@
         {
           "text": "Next",
           "next": "ensure_well_being",
-          "color": ""
+          "color": "#9FA8DA"
         }
       ]
     },
@@ -282,14 +264,14 @@
       "description": "",
       "answers": [
         {
-          "text": "Yes",
+          "text": "He's fine",
           "next": "capture_pictures",
-          "color": ""
+          "color": "#9FA8DA"
         },
         {
-          "text": "No",
+          "text": "He needs help",
           "next": "stay",
-          "color": ""
+          "color": "#7986CB"
         }
       ]
     },
@@ -298,13 +280,7 @@
       "question": "Stay at the victim and help him",
       "short_desc": "First Aid",
       "description": "",
-      "answers": [
-        {
-          "text": "Next",
-          "next": "stay",
-          "color": ""
-        }
-      ]
+      "answers": []
     }
   }
 }
