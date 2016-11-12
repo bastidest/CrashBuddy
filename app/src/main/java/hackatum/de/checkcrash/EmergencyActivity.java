@@ -8,22 +8,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import java.io.IOException;
 import java.io.InputStream;
 
+import hackatum.de.checkcrash.design.BreadcrumbView;
 import hackatum.de.checkcrash.fragments.ButtonFragment;
 import hackatum.de.checkcrash.fragments.PageFragmentListener;
 import hackatum.de.checkcrash.models.AccidentProcedure;
 import hackatum.de.checkcrash.models.Answer;
+import hackatum.de.checkcrash.models.Page;
 
 public class EmergencyActivity extends AppCompatActivity implements PageFragmentListener {
 
     private final int fragmentContainer = R.id.fragment_container;
+    private HorizontalScrollView scrollView;
+    private ViewGroup breadcrumbs;
     private FragmentManager fragmentManager;
     private AccidentProcedure accidentProcedure;
     private ViewGroup buttons;
+    private boolean firstPage = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,8 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         setContentView(R.layout.activity_emergency);
 
         buttons = (ViewGroup) findViewById(R.id.buttons);
+        breadcrumbs = (ViewGroup) findViewById(R.id.breadcrumbsll);
+        scrollView = (HorizontalScrollView) findViewById(R.id.breadcrumbs);
 
         fragmentManager = getSupportFragmentManager();
 
@@ -61,6 +70,11 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         switch (direction) {
             case 1:
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
+                BreadcrumbView bv = new BreadcrumbView(this, firstPage);
+                firstPage = false;
+                Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
+                bv.setText(page.shortDesc);
+                breadcrumbs.addView(bv);
                 break;
             case -1:
                 fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
@@ -71,7 +85,7 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
     }
 
     @Override
-    public void onButtonsLoad(Answer[] answers) {
+    public void onPageLoad(Answer[] answers) {
         buttons.removeAllViews();
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
@@ -87,6 +101,7 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
                 }
             });
         }
+        scrollView.fullScroll(ScrollView.FOCUS_RIGHT);
     }
 
     @Override

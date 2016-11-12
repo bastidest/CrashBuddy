@@ -7,6 +7,7 @@ import android.graphics.Path;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import hackatum.de.checkcrash.R;
 
@@ -16,7 +17,21 @@ public class BreadcrumbView extends Button {
     private int height;
 
     public BreadcrumbView(Context context) {
-        super(context);
+        this(context, false);
+    }
+
+    public BreadcrumbView(Context context, boolean first) {
+        super(context, null, android.R.attr.borderlessButtonStyle);
+        setTextSize(18);
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        if (!first) {
+            float density = getResources().getDisplayMetrics().density;
+            int marginLeft = (int) (density * (-10) + 0.5f);
+            p.setMargins(marginLeft, 0, 0, 0);
+            setLayoutParams(p);
+        }
+
     }
 
     public BreadcrumbView(Context context, AttributeSet attrs) {

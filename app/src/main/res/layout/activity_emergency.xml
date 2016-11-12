@@ -13,60 +13,10 @@
         android:background="@color/colorPrimary">
 
         <LinearLayout
+            android:id="@+id/breadcrumbsll"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-
-            <hackatum.de.checkcrash.design.BreadcrumbView
-                android:id="@+id/button9"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="2dp"
-                android:text="Button"
-                android:textSize="18sp" />
-
-            <hackatum.de.checkcrash.design.BreadcrumbView
-                android:id="@+id/breadcrumbView2"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-10dp"
-                android:layout_weight="1"
-                android:elevation="3dp"
-                android:text="Button"
-                android:textSize="18sp" />
-
-            <hackatum.de.checkcrash.design.BreadcrumbView
-                android:id="@+id/breadcrumbView4"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-10dp"
-                android:layout_weight="1"
-                android:text="Button"
-                android:textSize="18sp" />
-
-            <hackatum.de.checkcrash.design.BreadcrumbView
-                android:id="@+id/breadcrumbView3"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-10dp"
-                android:layout_weight="1"
-                android:text="Button"
-                android:textSize="18sp" />
-
-            <hackatum.de.checkcrash.design.BreadcrumbView
-                android:id="@+id/breadcrumbView"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-10dp"
-                android:layout_weight="1"
-                android:text="Button"
-                android:textSize="18sp" />
 
         </LinearLayout>
     </HorizontalScrollView>

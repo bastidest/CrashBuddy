@@ -40,7 +40,7 @@
     "secure": {
       "type": "buttons",
       "question": "Please secure accident!",
-      "short_desc": "secure",
+      "short_desc": "secured?",
       "answers": [
         {
           "text": "Ok",
