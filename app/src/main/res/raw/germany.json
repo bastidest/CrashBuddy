@@ -56,8 +56,44 @@
       "answers": [
         {
           "text": "Ok",
-          "next": "secure",
+          "next": "extra_info",
           "color": "#00ff00"
+        }
+      ]
+    },
+    "extra_info": {
+      "type": "audio_capture",
+      "question": "Capture audio for extra information",
+      "short_desc": "audio",
+      "answers": [
+        {
+          "text": "Ok",
+          "next": "call_police",
+          "color": "#00ff00"
+        }
+      ]
+    },
+    "call_police": {
+      "type": "call",
+      "question": "Call the police",
+      "short_desc": "Police",
+      "answers": [
+        {
+          "text": "End",
+          "next": "summary",
+          "color": "#00ff00"
+        }
+      ]
+    },
+    "summary": {
+      "type": "summary",
+      "question": "",
+      "short_desc": "",
+      "answers": [
+        {
+          "text": "",
+          "next": "",
+          "color": ""
         }
       ]
     }

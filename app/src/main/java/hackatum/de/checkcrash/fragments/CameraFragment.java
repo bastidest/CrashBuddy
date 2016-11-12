@@ -131,7 +131,7 @@ public class CameraFragment extends Fragment {
             public void onClick(View view) {
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 if (takePictureIntent.resolveActivity(CameraFragment.this.getActivity().getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, 69);
+                    startActivityForResult(takePictureIntent, 69); // ;)
                 }
             }
         });

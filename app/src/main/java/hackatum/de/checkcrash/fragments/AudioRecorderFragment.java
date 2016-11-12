@@ -89,6 +89,8 @@ public class AudioRecorderFragment extends Fragment {
         final AudioRecordingsListAdapter adapter = new AudioRecordingsListAdapter(getContext(), 0, 0, AudioRecording.recordings);
         list.setAdapter(adapter);
 
+        actualRecording = prepareMediaRecorder();
+
         record = (Button) view.findViewById(R.id.button6);
         record.setOnTouchListener(new View.OnTouchListener() {
             @Override

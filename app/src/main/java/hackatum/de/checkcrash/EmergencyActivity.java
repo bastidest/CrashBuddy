@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import hackatum.de.checkcrash.design.BreadcrumbView;
 import hackatum.de.checkcrash.fragments.AudioRecorderFragment;
 import hackatum.de.checkcrash.fragments.ButtonFragment;
+import hackatum.de.checkcrash.fragments.CallFragment;
 import hackatum.de.checkcrash.fragments.CameraFragment;
 import hackatum.de.checkcrash.fragments.PageFragmentListener;
 import hackatum.de.checkcrash.models.AccidentProcedure;
@@ -94,6 +95,9 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
                 break;
             case "audio_capture":
                 fragment = AudioRecorderFragment.newInstance(pageId);
+                break;
+            case "call":
+                fragment = CallFragment.newInstance(pageId);
                 break;
         }
         if (fragment != null) {
