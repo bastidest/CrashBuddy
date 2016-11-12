@@ -2,294 +2,296 @@
   "emergency_number": "017647768019",
   "police_number": "017647768019",
   "root_page": "injured",
-  "secure": {
-    "type": "buttons",
-    "question": "Secure the accident.",
-    "short_desc": "Secure",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "injured",
-        "color": ""
-      }
-    ]
-  },
-  "injured": {
-    "type": "buttons",
-    "question": "Are there any injured people?",
-    "short_desc": "Injured",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "check_injuries",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "police_1",
-        "color": ""
-      }
-    ]
-  },
-  "check_injuries": {
-    "type": "buttons",
-    "question": "Check the injuries",
-    "short_desc": "Check Injuries",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "police_2",
-        "color": ""
-      }
-    ]
-  },
-  "police_1": {
-    "type": "call",
-    "question": "Call the police",
-    "short_desc": "Police",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "capture_pictures",
-        "color": ""
-      }
-    ]
-  },
-  "capture_pictures": {
-    "type": "image_capture",
-    "question": "Capture images of the accident",
-    "short_desc": "Images",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "capture_audio",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "end",
-        "color": ""
-      }
-    ]
-  },
-  "capture_audio": {
-    "type": "audio_capture",
-    "question": "Record voice messages to documentate the accident",
-    "short_desc": "Voice",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "end",
-        "color": ""
-      }
-    ]
-  },
-  "end": {
-    "type": "buttons",
-    "question": "Wait for the Nuuuut nuuut",
-    "short_desc": "Wait",
-    "description": "",
-    "answers": [
-      {
-        "text": "End",
-        "next": "end",
-        "color": ""
-      }
-    ]
-  },
-  "police_2": {
-    "type": "buttons",
-    "question": "Call the police",
-    "short_desc": "Police",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "move_injured",
-        "color": ""
-      }
-    ]
-  },
-  "move_injured": {
-    "type": "buttons",
-    "question": "Move the injured out of the danger zone",
-    "short_desc": "Move",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "check_bleeding",
-        "color": ""
-      }
-    ]
-  },
-  "check_bleeding": {
-    "type": "buttons",
-    "question": "Is the victim bleeding heavily?",
-    "short_desc": "Bleeding",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "stop_bleeding",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "check_consciousness",
-        "color": ""
-      }
-    ]
-  },
-  "stop_bleeding": {
-    "type": "buttons",
-    "question": "Stop bleeding",
-    "short_desc": "Stop bleeding",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "check_consciousness",
-        "color": ""
-      }
-    ]
-  },
-  "check_consciousness": {
-    "type": "buttons",
-    "question": "Is the victim conscious?",
-    "short_desc": "Consciousness",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "first_aid",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "free_airways",
-        "color": ""
-      }
-    ]
-  },
-  "free_airways": {
-    "type": "buttons",
-    "question": "Free the victim's airways",
-    "short_desc": "Airways",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "head_tilt",
-        "color": ""
-      }
-    ]
-  },
-  "head_tilt": {
-    "type": "buttons",
-    "question": "Tilt the victim's head",
-    "short_desc": "Head Tilt",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "check_breathing",
-        "color": ""
-      }
-    ]
-  },
-  "check_breathing": {
-    "type": "buttons",
-    "question": "Is the victim breathing?",
-    "short_desc": "Breathing",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "stable_site",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "revivce",
-        "color": ""
-      }
-    ]
-  },
-  "stable_site": {
-    "type": "buttons",
-    "question": "Bring the victim to the stable site",
-    "short_desc": "Stable site",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "stable_site",
-        "color": ""
-      }
-    ]
-  },
-  "revive": {
-    "type": "buttons",
-    "question": "Revive the victim",
-    "short_desc": "Revive",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "revive",
-        "color": ""
-      }
-    ]
-  },
-  "first_aid": {
-    "type": "buttons",
-    "question": "Do first aid",
-    "short_desc": "First Aid",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "ensure_well_being",
-        "color": ""
-      }
-    ]
-  },
-  "ensure_well_being": {
-    "type": "buttons",
-    "question": "Talk to the victim? Is he fine or does he need additional help?",
-    "short_desc": "Well being",
-    "description": "",
-    "answers": [
-      {
-        "text": "Yes",
-        "next": "capture_pictures",
-        "color": ""
-      },
-      {
-        "text": "No",
-        "next": "stay",
-        "color": ""
-      }
-    ]
-  },
-  "stay": {
-    "type": "buttons",
-    "question": "Stay at the victim and help him",
-    "short_desc": "First Aid",
-    "description": "",
-    "answers": [
-      {
-        "text": "Next",
-        "next": "stay",
-        "color": ""
-      }
-    ]
+  "pages": {
+    "secure": {
+      "type": "buttons",
+      "question": "Secure the accident.",
+      "short_desc": "Secure",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "injured",
+          "color": ""
+        }
+      ]
+    },
+    "injured": {
+      "type": "buttons",
+      "question": "Are there any injured people?",
+      "short_desc": "Injured",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "check_injuries",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "police_1",
+          "color": ""
+        }
+      ]
+    },
+    "check_injuries": {
+      "type": "buttons",
+      "question": "Check the injuries",
+      "short_desc": "Check Injuries",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "police_2",
+          "color": ""
+        }
+      ]
+    },
+    "police_1": {
+      "type": "call",
+      "question": "Call the police",
+      "short_desc": "Police",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "capture_pictures",
+          "color": ""
+        }
+      ]
+    },
+    "capture_pictures": {
+      "type": "image_capture",
+      "question": "Capture images of the accident",
+      "short_desc": "Images",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "capture_audio",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "end",
+          "color": ""
+        }
+      ]
+    },
+    "capture_audio": {
+      "type": "audio_capture",
+      "question": "Record voice messages to documentate the accident",
+      "short_desc": "Voice",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "end",
+          "color": ""
+        }
+      ]
+    },
+    "end": {
+      "type": "buttons",
+      "question": "Wait for the Nuuuut nuuut",
+      "short_desc": "Wait",
+      "description": "",
+      "answers": [
+        {
+          "text": "End",
+          "next": "end",
+          "color": ""
+        }
+      ]
+    },
+    "police_2": {
+      "type": "buttons",
+      "question": "Call the police",
+      "short_desc": "Police",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "move_injured",
+          "color": ""
+        }
+      ]
+    },
+    "move_injured": {
+      "type": "buttons",
+      "question": "Move the injured out of the danger zone",
+      "short_desc": "Move",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "check_bleeding",
+          "color": ""
+        }
+      ]
+    },
+    "check_bleeding": {
+      "type": "buttons",
+      "question": "Is the victim bleeding heavily?",
+      "short_desc": "Bleeding",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "stop_bleeding",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "check_consciousness",
+          "color": ""
+        }
+      ]
+    },
+    "stop_bleeding": {
+      "type": "buttons",
+      "question": "Stop bleeding",
+      "short_desc": "Stop bleeding",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "check_consciousness",
+          "color": ""
+        }
+      ]
+    },
+    "check_consciousness": {
+      "type": "buttons",
+      "question": "Is the victim conscious?",
+      "short_desc": "Consciousness",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "first_aid",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "free_airways",
+          "color": ""
+        }
+      ]
+    },
+    "free_airways": {
+      "type": "buttons",
+      "question": "Free the victim's airways",
+      "short_desc": "Airways",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "head_tilt",
+          "color": ""
+        }
+      ]
+    },
+    "head_tilt": {
+      "type": "buttons",
+      "question": "Tilt the victim's head",
+      "short_desc": "Head Tilt",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "check_breathing",
+          "color": ""
+        }
+      ]
+    },
+    "check_breathing": {
+      "type": "buttons",
+      "question": "Is the victim breathing?",
+      "short_desc": "Breathing",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "stable_site",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "revivce",
+          "color": ""
+        }
+      ]
+    },
+    "stable_site": {
+      "type": "buttons",
+      "question": "Bring the victim to the stable site",
+      "short_desc": "Stable site",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "stable_site",
+          "color": ""
+        }
+      ]
+    },
+    "revive": {
+      "type": "buttons",
+      "question": "Revive the victim",
+      "short_desc": "Revive",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "revive",
+          "color": ""
+        }
+      ]
+    },
+    "first_aid": {
+      "type": "buttons",
+      "question": "Do first aid",
+      "short_desc": "First Aid",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "ensure_well_being",
+          "color": ""
+        }
+      ]
+    },
+    "ensure_well_being": {
+      "type": "buttons",
+      "question": "Talk to the victim? Is he fine or does he need additional help?",
+      "short_desc": "Well being",
+      "description": "",
+      "answers": [
+        {
+          "text": "Yes",
+          "next": "capture_pictures",
+          "color": ""
+        },
+        {
+          "text": "No",
+          "next": "stay",
+          "color": ""
+        }
+      ]
+    },
+    "stay": {
+      "type": "buttons",
+      "question": "Stay at the victim and help him",
+      "short_desc": "First Aid",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "stay",
+          "color": ""
+        }
+      ]
+    }
   }
 }
