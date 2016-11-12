@@ -104,4 +104,12 @@
         android:backgroundTint="#EF5350"
         android:text="Grant permissions" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:text="App icon by Mourad Mokrane" />
+
 </RelativeLayout>
