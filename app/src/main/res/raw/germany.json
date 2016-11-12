@@ -5,8 +5,21 @@
   "pages": {
     "secure": {
       "type": "buttons",
-      "question": "Secure the accident. Your warning triangle is in the {{positon.triangle}}. Your first aid kit is in the {{positon.firstaid}}.",
+      "question": "Secure the accident.",
       "short_desc": "Secure",
+      "description": "",
+      "answers": [
+        {
+          "text": "Next",
+          "next": "warning_triangle",
+          "color": "#9FA8DA"
+        }
+      ]
+    },
+    "warning_triangle": {
+      "type": "buttons",
+      "question": "Put up the warning triangle. It's located in the {{positon.triangle}}.",
+      "short_desc": "Warning triangle",
       "description": "",
       "answers": [
         {
@@ -38,7 +51,7 @@
       "type": "buttons",
       "question": "Check the injuries",
       "short_desc": "Check Injuries",
-      "description": "",
+      "description": "Remeber - your first-aid-kit is in the {{positon.firstaid}}",
       "answers": [
         {
           "text": "Next",

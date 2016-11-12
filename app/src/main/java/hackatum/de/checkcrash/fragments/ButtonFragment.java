@@ -55,9 +55,11 @@ public class ButtonFragment extends Fragment {
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
 
         String question = page.question;
+        String description = page.description;
         question = replaceHandlebar(question);
+        description = replaceHandlebar(description);
 
-        page.speak(getContext(), Locale.ENGLISH, question);
+        page.speak(getContext(), Locale.ENGLISH, question + "." + description);
 
         questionTextView.setText(question);
 
