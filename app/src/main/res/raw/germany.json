@@ -204,7 +204,7 @@
       }
     ]
   },
-  "check_breathinh": {
+  "check_breathing": {
     "type": "buttons",
     "question": "Is the victim breathing?",
     "short_desc": "Breathing",
@@ -247,5 +247,49 @@
         "color": ""
       }
     ]
-  }
+  },
+  "first_aid": {
+    "type": "buttons",
+    "question": "Do first aid",
+    "short_desc": "First Aid",
+    "description": "",
+    "answers": [
+      {
+        "text": "Next",
+        "next": "ensure_well_being",
+        "color": ""
+      }
+    ]
+  },
+  "ensure_well_being": {
+    "type": "buttons",
+    "question": "Talk to the victim? Is he fine or does he need additional help?",
+    "short_desc": "Well being",
+    "description": "",
+    "answers": [
+      {
+        "text": "Yes",
+        "next": "capture_pictures",
+        "color": ""
+      },
+      {
+        "text": "No",
+        "next": "stay",
+        "color": ""
+      }
+    ]
+  },
+  "stay": {
+    "type": "buttons",
+    "question": "Stay at the victim and help him",
+    "short_desc": "First Aid",
+    "description": "",
+    "answers": [
+      {
+        "text": "Next",
+        "next": "stay",
+        "color": ""
+      }
+    ]
+  },
 }
