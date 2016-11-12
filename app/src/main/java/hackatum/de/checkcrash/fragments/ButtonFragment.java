@@ -1,7 +1,6 @@
 package hackatum.de.checkcrash.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,13 +9,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import hackatum.de.checkcrash.R;
+import hackatum.de.checkcrash.models.AccidentProcedure;
+import hackatum.de.checkcrash.models.Page;
 
 public class ButtonFragment extends Fragment {
     private static final String ARG_PAGE_ID = "pageid";
+    private String pageId;
 
-    private String pageId = "lörres";
-
-    private OnFragmentInteractionListener mListener;
+    private PageFragmentListener mListener;
     private TextView questionTextView;
 
     public ButtonFragment() {
@@ -43,27 +43,27 @@ public class ButtonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_button, container, false);
+
         questionTextView = (TextView) root.findViewById(R.id.text_question);
-        questionTextView.setText(pageId);
+
+        Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
+
+        String question = page.question;
+        questionTextView.setText(question);
+
+        mListener.onButtonsLoad(page.answers);
 
         return root;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof PageFragmentListener) {
+            mListener = (PageFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement PageFragmentListener");
         }
     }
 
@@ -71,20 +71,5 @@ public class ButtonFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
     }
 }

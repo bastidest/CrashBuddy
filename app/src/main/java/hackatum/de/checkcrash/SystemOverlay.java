@@ -26,7 +26,7 @@ public class SystemOverlay {
     public static void createPhoneOverlay(Context c, String line1, String line2, String line3) {
         WindowManager windowManager;
         windowManager = (WindowManager) c.getSystemService(Context.WINDOW_SERVICE);
-        LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE)
+        LayoutInflater inflater = (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
