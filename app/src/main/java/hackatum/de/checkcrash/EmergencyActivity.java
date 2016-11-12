@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import hackatum.de.checkcrash.design.BreadcrumbView;
+import hackatum.de.checkcrash.fragments.AudioRecorderFragment;
 import hackatum.de.checkcrash.fragments.ButtonFragment;
+import hackatum.de.checkcrash.fragments.CameraFragment;
 import hackatum.de.checkcrash.fragments.PageFragmentListener;
 import hackatum.de.checkcrash.models.AccidentProcedure;
 import hackatum.de.checkcrash.models.Answer;
@@ -79,11 +82,27 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
                 break;
         }
         int fragmentContainer = R.id.fragment_container;
-        fragmentTransaction.replace(fragmentContainer, ButtonFragment.newInstance(pageId));
-        if (pageList.size() > 0)
-            fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-        pageList.add(AccidentProcedure.accidentProcedure.pages.get(pageId));
+
+        Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
+        Fragment fragment = null;
+        switch (page.type) {
+            case "buttons":
+                fragment = ButtonFragment.newInstance(pageId);
+                break;
+            case "image_capture":
+                fragment = CameraFragment.newInstance(pageId);
+                break;
+            case "audio_capture":
+                fragment = AudioRecorderFragment.newInstance(pageId);
+                break;
+        }
+        if (fragment != null) {
+            fragmentTransaction.replace(fragmentContainer, fragment);
+            if (pageList.size() > 0)
+                fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            pageList.add(page);
+        }
     }
 
     /**

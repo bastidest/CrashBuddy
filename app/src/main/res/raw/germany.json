@@ -44,8 +44,20 @@
       "answers": [
         {
           "text": "Ok",
-          "next": "injured",
+          "next": "contact_info",
           "color": ""
+        }
+      ]
+    },
+    "contact_info": {
+      "type": "image_capture",
+      "question": "Capture photos of contact information",
+      "short_desc": "contact",
+      "answers": [
+        {
+          "text": "Ok",
+          "next": "secure",
+          "color": "#00ff00"
         }
       ]
     }
