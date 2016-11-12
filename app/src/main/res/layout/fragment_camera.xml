@@ -22,9 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/button_call"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView10"
-        android:layout_marginStart="12dp">
+        android:layout_below="@+id/textView10">
 
         <GridLayout
             android:id="@+id/image_grid"
