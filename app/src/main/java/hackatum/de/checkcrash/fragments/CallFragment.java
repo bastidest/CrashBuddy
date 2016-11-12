@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import hackatum.de.checkcrash.Geolocation;
 import hackatum.de.checkcrash.R;
 import hackatum.de.checkcrash.SystemOverlay;
 import hackatum.de.checkcrash.models.AccidentProcedure;
@@ -85,7 +86,8 @@ public class CallFragment extends Fragment {
 
     public void createOverlay() {
         //SystemOverlay.requestSystemAlertPermission(getActivity()); // TODO: 12.11.2016 call in settings
-        SystemOverlay.createPhoneOverlay(getContext(), "noot noot noot", "noot noot", "noot");
+        String[] locationName = Geolocation.getLocationName(getContext(), Geolocation.actualLocation);
+        SystemOverlay.createPhoneOverlay(getContext(), locationName[0], locationName[1], locationName[2]);
     }
 
 
