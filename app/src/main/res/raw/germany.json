@@ -67,6 +67,19 @@
       "description": "",
       "answers": [
         {
+          "text": "Next",
+          "next": "capture_audio",
+          "color": ""
+        }
+      ]
+    },
+    "additional_info": {
+      "type": "buttons",
+      "question": "Do you want to record some additional Information?",
+      "short_desc": "Additional info",
+      "description": "",
+      "answers": [
+        {
           "text": "Yes",
           "next": "capture_audio",
           "color": ""
@@ -80,7 +93,7 @@
     },
     "capture_audio": {
       "type": "audio_capture",
-      "question": "Record voice messages to documentate the accident",
+      "question": "Record voice messages to document the accident",
       "short_desc": "Voice",
       "description": "",
       "answers": [
@@ -120,7 +133,7 @@
     "move_injured": {
       "type": "buttons",
       "question": "Move the injured out of the danger zone",
-      "short_desc": "Move",
+      "short_desc": "Move victim",
       "description": "",
       "answers": [
         {
@@ -150,7 +163,7 @@
     },
     "stop_bleeding": {
       "type": "buttons",
-      "question": "Stop bleeding",
+      "question": "Stop the bleeding",
       "short_desc": "Stop bleeding",
       "description": "",
       "answers": [
@@ -225,8 +238,8 @@
     },
     "stable_site": {
       "type": "buttons",
-      "question": "Bring the victim to the stable site",
-      "short_desc": "Stable site",
+      "question": "Bring the victim to the recovery position",
+      "short_desc": "Recovery position",
       "description": "",
       "answers": [
         {

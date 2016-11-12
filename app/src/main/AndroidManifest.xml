@@ -16,15 +16,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmergencyActivity" />
-        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".EmergencyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
 
         <receiver android:name=".EmergencyWidget">
             <intent-filter>
@@ -36,7 +42,9 @@
                 android:resource="@xml/emergency_widget_info" />
         </receiver>
 
-        <activity android:name=".ViewAccidentSummaryActivity"></activity>
+        <activity
+            android:name=".ViewAccidentSummaryActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
