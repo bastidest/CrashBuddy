@@ -1,7 +1,7 @@
 {
   "emergency_number": "017647768019",
   "police_number": "017647768019",
-  "root_page": "injured",
+  "root_page": "secure",
   "pages": {
     "secure": {
       "type": "buttons",
