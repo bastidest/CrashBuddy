@@ -1,6 +1,7 @@
 package hackatum.de.checkcrash.fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -20,9 +21,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import hackatum.de.checkcrash.R;
 import hackatum.de.checkcrash.models.AccidentProcedure;
+import hackatum.de.checkcrash.models.Page;
 
 
 public class CameraFragment extends Fragment {
@@ -33,6 +36,8 @@ public class CameraFragment extends Fragment {
     TextView desc;
     private String pageId;
 
+    private PageFragmentListener mListener;
+
 
 
     public CameraFragment() {
@@ -40,21 +45,20 @@ public class CameraFragment extends Fragment {
     }
 
 
-    public static CameraFragment newInstance(String param1, String param2) {
+    public static CameraFragment newInstance(String pageId) {
         CameraFragment fragment = new CameraFragment();
-
-
+        Bundle args = new Bundle();
+        args.putString(ARG_PAGE_ID, pageId);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             pageId = getArguments().getString(ARG_PAGE_ID);
         }
-
     }
 
     /**
@@ -132,8 +136,32 @@ public class CameraFragment extends Fragment {
             }
         });
 
+        Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
+        page.speak(getContext(), Locale.ENGLISH);
+        desc.setText(page.question);
+
+
+        mListener.onPageLoad(page);
+
 
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof PageFragmentListener) {
+            mListener = (PageFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement PageFragmentListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
     }
 
 }
