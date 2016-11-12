@@ -5,11 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -25,10 +23,19 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     @Override
+    public void onBackPressed() {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("tts", tts.isChecked());
+        editor.putString("firstaid", firstAid.getText().toString());
+        editor.putString("warningtriangle", warningTriangle.getText().toString());
+        editor.commit();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
 
         SystemOverlay.requestSystemAlertPermission(this);
 
@@ -75,35 +82,6 @@ public class SettingsActivity extends AppCompatActivity {
                             69 + 1);
                 }
                 SystemOverlay.requestSystemAlertPermission(SettingsActivity.this);
-            }
-        });
-
-        tts.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("tts", b);
-                editor.commit();
-            }
-        });
-
-
-        firstAid.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("firstaid", firstAid.getText().toString());
-                editor.commit();
-                return false;
-            }
-        });
-        warningTriangle.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("warningtriangle", warningTriangle.getText().toString());
-                editor.commit();
-                return false;
             }
         });
 

@@ -5,7 +5,7 @@
   "pages": {
     "secure": {
       "type": "buttons",
-      "question": "Secure the accident.",
+      "question": "Secure the accident. Your warning triangle is in the {{positon.triangle}}. Your first aid kit is in the {{positon.firstaid}}.",
       "short_desc": "Secure",
       "description": "",
       "answers": [

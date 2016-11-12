@@ -19,13 +19,16 @@ public class Page {
     public Answer[] answers;
 
     public void speak(Context c, Locale language) {
+        speak(c, language, question);
+    }
+
+    public void speak(Context c, Locale language, String text) {
         // TODO: 12.11.2016 dont check shared preferences on every speak call
         SharedPreferences sharedPreferences = c.getSharedPreferences("settings", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("tts", true)) {
             SpeechSynthesis tts = SpeechSynthesis.getInstance(c, language);
-            tts.say(question);
+            tts.say(text);
         }
-
     }
 
 

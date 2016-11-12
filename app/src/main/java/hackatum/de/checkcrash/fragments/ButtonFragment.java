@@ -1,6 +1,7 @@
 package hackatum.de.checkcrash.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import java.util.Locale;
 import hackatum.de.checkcrash.R;
 import hackatum.de.checkcrash.models.AccidentProcedure;
 import hackatum.de.checkcrash.models.Page;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ButtonFragment extends Fragment {
     private static final String ARG_PAGE_ID = "pageid";
@@ -50,9 +53,12 @@ public class ButtonFragment extends Fragment {
         WebView webView = (WebView) view.findViewById(R.id.web_view);
 
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
-        page.speak(getContext(), Locale.ENGLISH);
 
         String question = page.question;
+        question = replaceHandlebar(question);
+
+        page.speak(getContext(), Locale.ENGLISH, question);
+
         questionTextView.setText(question);
 
         webView.loadData(page.description, "text/html; charset=utf-8", "utf-8");
@@ -61,6 +67,14 @@ public class ButtonFragment extends Fragment {
         mListener.onPageLoad(page);
 
         return view;
+    }
+
+    private String replaceHandlebar(String question) {
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("settings", MODE_PRIVATE);
+        String firstaid = sharedPreferences.getString("firstaid", "");
+        String triangle = sharedPreferences.getString("warningtriangle", "");
+        question = question.replace("{{positon.triangle}}", triangle);
+        return question.replace("{{positon.firstaid}}", firstaid);
     }
 
     @Override
