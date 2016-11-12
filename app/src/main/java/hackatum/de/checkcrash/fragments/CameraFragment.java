@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -31,14 +33,12 @@ import hackatum.de.checkcrash.models.Page;
 public class CameraFragment extends Fragment {
 
     private static final String ARG_PAGE_ID = "pageid";
+    public static ArrayList<File> rescentImages = new ArrayList<>();
     Button cameraButton;
     GridLayout layout;
     TextView desc;
     private String pageId;
-
     private PageFragmentListener mListener;
-
-
 
     public CameraFragment() {
         // Required empty public constructor
@@ -79,6 +79,8 @@ public class CameraFragment extends Fragment {
             bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
+
+            rescentImages.add(file);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,6 +137,22 @@ public class CameraFragment extends Fragment {
                 }
             }
         });
+
+        if (rescentImages.size() > 0) {
+            for (File image : rescentImages) {
+                LinearLayout.LayoutParams params =
+                        new LinearLayout.LayoutParams(500, 550);
+
+                params.setMargins(0, 0, 0, 100);
+
+                ImageView iv = new ImageView(getActivity());
+                iv.setLayoutParams(params);
+                if (image.exists()) {
+                    iv.setImageBitmap(BitmapFactory.decodeFile(image.getAbsolutePath()));
+                }
+                layout.addView(iv);
+            }
+        }
 
         Page page = AccidentProcedure.accidentProcedure.pages.get(pageId);
         page.speak(getContext(), Locale.ENGLISH);
