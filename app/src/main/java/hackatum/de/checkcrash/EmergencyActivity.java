@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +17,10 @@ import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,7 +36,7 @@ import hackatum.de.checkcrash.models.AccidentProcedure;
 import hackatum.de.checkcrash.models.Answer;
 import hackatum.de.checkcrash.models.Page;
 
-public class EmergencyActivity extends AppCompatActivity implements PageFragmentListener {
+public class EmergencyActivity extends AppCompatActivity implements PageFragmentListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private HorizontalScrollView scrollView;
     private ViewGroup breadcrumbs;
@@ -38,6 +44,7 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
     private AccidentProcedure accidentProcedure;
     private ViewGroup buttons;
     private ArrayList<Page> pageList = new ArrayList<>();
+    private GoogleApiClient googleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +71,14 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         }
 
         loadFragment(accidentProcedure.rootPage, 0);
+
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
     }
 
 
@@ -210,5 +225,30 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         fragmentManager.popBackStack();
         if (pageList.size() > 1)
             pageList.remove(pageList.size() - 1);
+    }
+
+    protected void onStart() {
+        googleApiClient.connect();
+        super.onStart();
+    }
+
+    protected void onStop() {
+        googleApiClient.disconnect();
+        super.onStop();
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        Geolocation.requestGeolocation(this, googleApiClient);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }
