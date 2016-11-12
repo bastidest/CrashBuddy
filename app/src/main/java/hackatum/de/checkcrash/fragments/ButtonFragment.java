@@ -56,6 +56,7 @@ public class ButtonFragment extends Fragment {
         questionTextView.setText(question);
 
         webView.loadData(page.description, "text/html; charset=utf-8", "utf-8");
+        webView.loadUrl("file:///android_asset/pages/" + pageId + "/index.html");
 
         mListener.onPageLoad(page);
 

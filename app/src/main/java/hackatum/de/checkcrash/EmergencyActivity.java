@@ -63,7 +63,6 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             e.printStackTrace();
         }
 
-
         loadFragment(accidentProcedure.rootPage, 0);
     }
 
