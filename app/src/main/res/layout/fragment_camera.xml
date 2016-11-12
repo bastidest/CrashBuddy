@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#474747"
     android:paddingTop="10dp"
     tools:context="hackatum.de.checkcrash.fragments.CameraFragment">
 
