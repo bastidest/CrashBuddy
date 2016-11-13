@@ -1,6 +1,7 @@
 package hackatum.de.checkcrash;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -59,6 +60,16 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
         buttons = (ViewGroup) findViewById(R.id.buttons);
         breadcrumbs = (ViewGroup) findViewById(R.id.breadcrumbsll);
         scrollView = (HorizontalScrollView) findViewById(R.id.breadcrumbs);
+
+        SharedPreferences prefs = getSharedPreferences("settings", MODE_PRIVATE);
+        boolean firststart = prefs.getBoolean("firststart", true);
+        if (firststart) {
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean("firststart", false);
+            edit.commit();
+            Intent i = new Intent(this, SettingsActivity.class);
+            startActivity(i);
+        }
 
         fragmentManager = getSupportFragmentManager();
 
