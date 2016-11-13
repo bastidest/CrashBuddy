@@ -272,7 +272,7 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
             String uri = "tel:" + AccidentProcedure.accidentProcedure.policeNumber;
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse(uri));
-            startActivityForResult(intent, 70);
+            startActivityForResult(intent, 71);
             String[] locationName = Geolocation.getLocationName(this, Geolocation.actualLocation);
             SystemOverlay.createPhoneOverlay(this, locationName[0], locationName[1], locationName[2]);
         }
@@ -281,8 +281,9 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 70) {
+        if (requestCode == 71) {
             SystemOverlay.destroyPhoneOverlay();
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
