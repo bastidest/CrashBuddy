@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -267,7 +268,21 @@ public class EmergencyActivity extends AppCompatActivity implements PageFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.settings_menu_item) {
             startActivity(new Intent(this, SettingsActivity.class));
+        } else if (item.getItemId() == R.id.call_police_menu_item) {
+            String uri = "tel:" + AccidentProcedure.accidentProcedure.policeNumber;
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse(uri));
+            startActivityForResult(intent, 70);
+            String[] locationName = Geolocation.getLocationName(this, Geolocation.actualLocation);
+            SystemOverlay.createPhoneOverlay(this, locationName[0], locationName[1], locationName[2]);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 70) {
+            SystemOverlay.destroyPhoneOverlay();
+        }
     }
 }
