@@ -5,6 +5,7 @@ import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -75,8 +76,12 @@ public class AudioRecorderFragment extends Fragment {
 
     private void resetMediaRecorder() {
         if (mediaRecorderRunning) {
-            mediaRecorderRunning = false;
-            mediaRecorder.stop();
+            try {
+                mediaRecorder.stop();
+                mediaRecorderRunning = false;
+            } catch (RuntimeException e) {
+                Log.w("AudioRecorder", "failed to stop audio recorder");
+            }
             AudioRecording.recordings.add(actualRecording);
             adapter.notifyDataSetChanged();
             actualRecording = prepareMediaRecorder();
