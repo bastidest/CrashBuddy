@@ -37,6 +37,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/camera_button"
             android:backgroundTint="@color/colorAccent"
+            android:elevation="9dp"
             android:scaleType="centerInside"
             android:tint="#ffffff"
             app:srcCompat="@drawable/ic_phone_forwarded_black_24dp" />

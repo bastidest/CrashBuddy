@@ -5,7 +5,7 @@
   "pages": {
     "secure": {
       "type": "buttons",
-      "question": "Secure the accident.",
+      "question": "Secure the accident Site.",
       "short_desc": "Secure",
       "description": "",
       "answers": [
@@ -290,7 +290,7 @@
     },
     "stay": {
       "type": "buttons",
-      "question": "Stay at the victim and help him",
+      "question": "Stay by the victim and help him",
       "short_desc": "First Aid",
       "description": "",
       "answers": []
