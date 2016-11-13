@@ -7,22 +7,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:id="@+id/button_call"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:backgroundTint="#767676"
-        android:text="Add photo"
-        android:textColor="#ffffff" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/button_call"
-        android:layout_below="@+id/textView10">
+        android:layout_below="@+id/textView10"
+        android:layout_marginBottom="10dp">
 
         <GridLayout
             android:id="@+id/image_grid"
@@ -48,5 +38,21 @@
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
+
+    <Button
+        android:id="@+id/button_call"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/camera_button"
+        android:elevation="9dp"
+        android:forceHasOverlappingRendering="false"
+        android:foreground="@drawable/ic_photo_camera_black_24dp"
+        android:foregroundGravity="center"
+        android:foregroundTint="#ffffffff"
+        android:textColor="#ffffff"
+        android:visibility="visible" />
 
 </RelativeLayout>

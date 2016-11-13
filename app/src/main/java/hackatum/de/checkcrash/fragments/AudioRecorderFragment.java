@@ -97,14 +97,12 @@ public class AudioRecorderFragment extends Fragment {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     mediaRecorder.start();
-                    record.setText("Recording...");
                 }
                 if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     mediaRecorder.stop();
                     AudioRecording.recordings.add(actualRecording);
                     adapter.notifyDataSetChanged();
                     actualRecording = prepareMediaRecorder();
-                    record.setText("Hold to record");
                 }
                 return false;
             }

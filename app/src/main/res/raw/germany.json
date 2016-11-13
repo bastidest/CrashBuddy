@@ -1,6 +1,6 @@
 {
-  "emergency_number": "017647768019",
-  "police_number": "017647768019",
+  "emergency_number": "123456789",
+  "police_number": "123456789",
   "root_page": "secure",
   "pages": {
     "secure": {
@@ -51,7 +51,7 @@
       "type": "buttons",
       "question": "Check the injuries",
       "short_desc": "Check Injuries",
-      "description": "Remeber - your first-aid-kit is in the {{positon.firstaid}}",
+      "description": "Remember - your first-aid-kit is in the {{positon.firstaid}}",
       "answers": [
         {
           "text": "Next",
@@ -119,7 +119,7 @@
     },
     "end": {
       "type": "buttons",
-      "question": "Wait for the Police",
+      "question": "Wait for the police",
       "short_desc": "Wait",
       "description": "",
       "answers": []
@@ -252,8 +252,8 @@
     },
     "revive": {
       "type": "buttons",
-      "question": "Revive the victim",
-      "short_desc": "Revive",
+      "question": "Reanimate the victim",
+      "short_desc": "Reanimate",
       "description": "",
       "answers": []
     },

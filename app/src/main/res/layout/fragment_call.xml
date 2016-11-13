@@ -29,13 +29,17 @@
 
         <ImageButton
             android:id="@+id/button_call"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_police_cap_black" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/camera_button"
+            android:backgroundTint="@color/colorAccent"
+            android:scaleType="centerInside"
+            android:tint="#ffffff"
+            app:srcCompat="@drawable/ic_phone_forwarded_black_24dp" />
     </RelativeLayout>
 
 </FrameLayout>
