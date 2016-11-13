@@ -33,6 +33,8 @@ public class AudioRecorderFragment extends Fragment {
     ListView list;
     MediaRecorder mediaRecorder;
     AudioRecording actualRecording;
+    AudioRecordingsListAdapter adapter;
+    boolean mediaRecorderRunning = false;
     private PageFragmentListener mListener;
     private String pageId;
 
@@ -71,6 +73,16 @@ public class AudioRecorderFragment extends Fragment {
         return recording;
     }
 
+    private void resetMediaRecorder() {
+        if (mediaRecorderRunning) {
+            mediaRecorderRunning = false;
+            mediaRecorder.stop();
+            AudioRecording.recordings.add(actualRecording);
+            adapter.notifyDataSetChanged();
+            actualRecording = prepareMediaRecorder();
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +98,7 @@ public class AudioRecorderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_audio_recorder, container, false);
 
         list = (ListView) view.findViewById(R.id.listView);
-        final AudioRecordingsListAdapter adapter = new AudioRecordingsListAdapter(getContext(), 0, 0, AudioRecording.recordings);
+        adapter = new AudioRecordingsListAdapter(getContext(), 0, 0, AudioRecording.recordings);
         list.setAdapter(adapter);
 
         actualRecording = prepareMediaRecorder();
@@ -97,12 +109,10 @@ public class AudioRecorderFragment extends Fragment {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     mediaRecorder.start();
+                    mediaRecorderRunning = true;
                 }
                 if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    mediaRecorder.stop();
-                    AudioRecording.recordings.add(actualRecording);
-                    adapter.notifyDataSetChanged();
-                    actualRecording = prepareMediaRecorder();
+                    resetMediaRecorder();
                 }
                 return false;
             }
@@ -136,5 +146,9 @@ public class AudioRecorderFragment extends Fragment {
         mListener = null;
     }
 
-
+    @Override
+    public void onPause() {
+        resetMediaRecorder();
+        super.onPause();
+    }
 }
